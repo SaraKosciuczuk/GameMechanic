@@ -1,0 +1,81 @@
+
+h1 {
+    font-size: 50px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* centering canvas */
+#myCanvas {
+    border: 2px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#playButton {
+    background-color: #5684D5; 
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#towerButton {
+    background-color: #56D596;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#sellButton {
+    background-color: #56D596;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    position: absolute;
+    top: 80%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.health {
+    font-size: 30px;
+    position: absolute;
+    top: 23%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+}
+
+.wave {
+    font-size: 30px;
+    position: absolute;
+    top: 28%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+}
