@@ -6,7 +6,7 @@ var wallet = 100;
 
 window.onload = function(){
 
-     // path
+    // path
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 180, 800, 100);
     ctx.rect(0, 180, 800, 100);
@@ -14,11 +14,11 @@ window.onload = function(){
 }
 
 function playGame() {
-    alert("Wave 1 incoming");
-    console.log("wave 1 incoming");
+    //alert("Wave 1 incoming");
+    //console.log("wave 1 incoming");
 }
 
-// makes button dosapear on click
+// makes button disapear on click
 function buttonGone() {
     var x = document.getElementById("playButton");
       x.style.display = "none";
@@ -62,21 +62,20 @@ var tower3 = new Image();
 tower1.src = "./tower1.png";
 tower2.src = "./tower2.png";
 tower3.src = "./tower3.png";
-//towerX = 50;
 
 // update
 function update() {
-    //towerX++;
+    towerChange();
 }
 
 // draw
 function draw() {
-    //console.log("logged");
+    console.log("draw function logged");
     //ctx.clearRect(0,0, canvas.width, canvas.height);
-    //ctx.drawImage(tower3, 20,20);
-    //ctx.fillStyle = "#00FF00";
-    //ctx.fillRect(50,50,100,100);
 
+    ctx.drawImage(tower1);
+    ctx.drawImage(tower2);
+    ctx.drawImage(tower3);
     animate();
 }
 
@@ -89,9 +88,8 @@ function animate() {
 
 // gameloop
 function gameLoop() {
-    //update();
+    update();
     draw();
-    //window.requestAnimationFrame(gameloop.bind(this));
 }
     
 function loop() {
@@ -100,9 +98,19 @@ function loop() {
 
 function towerChange() {
     console.log("tower has changed");
+
+    var select = document.getElementById("towers").value;
+
+    if (select === "tower1"){
+        ctx.drawImage(tower1, 50, 50, 100, 100);
+    }
+    else if(select == "tower2"){
+        ctx.drawImage(tower2, 150, 50, 100, 100);
+    }
+    else if(select == "tower3"){
+        ctx.drawImage(tower3, 150, 150, 100, 100);
+    }
+
+    document.getElementById("myCanvas").focus();
 }
 
-
-//function dropdownButton() {
-   // document.getElementById("dropbtn").classList.toggle("show");
-//}
