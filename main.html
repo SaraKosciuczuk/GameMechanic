@@ -13,14 +13,33 @@
 <!-- creating canvas-->
 <canvas id="myCanvas" width="800" height="500"></canvas>
 
-<script src="game.js"></script>
+<!-- buttons -->
+<button id="playButton" onclick="buttonGone(), gameLoop()" >Play Game</button>
+<button class="buyTower" onclick="buyTower()">Buy Tower</button>
+<button class="sellButton" onclick="sellTower()">Sell Tower</button>
 
-<button id="playButton" onclick="play">Play Game</button>
-<button id="towerButton" onclick="tower">Place Tower</button>
-<button id="sellButton" onclick="sell">Sell Tower</button>
+<!-- select a tower -->
+<select name="Towers" id="towers" onchange="towerChange()">
+    <option value="Tower_1">Red Tower</option>
+    <option value="Tower_2">Yellow Tower</option>
+    <option value="Tower_3">Blue Tower</option>
+</select>
 
-<p class="health"> Lives: 3</p>
+<!-- drop-down buttons for towers -->
+<!-- 
+<div class="dropdown">
+	<button onclick="dropdownButton()" id="dropbtn">Buy</button>
+	<div id="dropBtns" class="dropdown-content">
+	  <a href="#">Link 1</a>
+	  <a href="#">Link 2</a>
+	  <a href="#">Link 3</a>
+	</div>
+  </div>
+-->
+
 <p class="wave"> Wave: 1</p>
+
+<script src="game.js"></script>
 
 </body>
 </html>
