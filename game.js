@@ -4,14 +4,6 @@ const ctx = canvas.getContext("2d");
 
 var wallet = 100;
 
-window.onload = function(){
-
-    // path
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 180, 800, 100);
-    ctx.rect(0, 180, 800, 100);
-    ctx.stroke();
-}
 
 function playGame() {
     //alert("Wave 1 incoming");
@@ -71,19 +63,20 @@ function update() {
 // draw
 function draw() {
     console.log("draw function logged");
-    //ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.clearRect(0,0, canvas.width, canvas.height);
 
-    ctx.drawImage(tower1);
-    ctx.drawImage(tower2);
-    ctx.drawImage(tower3);
     animate();
+
+    // path
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 180, 800, 100);
+    ctx.rect(0, 180, 800, 100);
+    ctx.stroke();
 }
 
 // animation
 function animate() {
     drawPlayerHealth();
-    //ctx.drawImage(tower1, 50, 50, 100, 100);
-    //requestAnimationFrame(animate);
 }
 
 // gameloop
@@ -91,24 +84,21 @@ function gameLoop() {
     update();
     draw();
 }
-    
-function loop() {
-    setTimeout(gameLoop, 1000); //1000 = 1000ms = 1s
-}
 
+// draws the tower images
 function towerChange() {
     console.log("tower has changed");
 
     var select = document.getElementById("towers").value;
 
-    if (select === "tower1"){
-        ctx.drawImage(tower1, 50, 50, 100, 100);
+    if (select === "tower_1"){
+        ctx.drawImage(tower1, 0,0);
     }
-    else if(select == "tower2"){
-        ctx.drawImage(tower2, 150, 50, 100, 100);
+    else if(select == "tower_2"){
+        ctx.drawImage(tower2, 0,0);
     }
-    else if(select == "tower3"){
-        ctx.drawImage(tower3, 150, 150, 100, 100);
+    else if(select == "tower_3"){
+        ctx.drawImage(tower3, 0,0);
     }
 
     document.getElementById("myCanvas").focus();

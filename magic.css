@@ -78,6 +78,7 @@ h1 {
 /* all images */
 img {
     width:100%;
+    max-width: 50px;
 }
 
 
