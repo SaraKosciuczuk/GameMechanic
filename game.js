@@ -52,12 +52,13 @@ function update() {
 const ENEMY_SIZE = 25;
 var enemyXpos = 0;
 var enemyYpos = 230;
-var enemyXspeed = 5;
+var enemyXspeed = 1;
 var enemyYspeed = 0;
+var enemyHealth = 5;
 
 // rectangle enemies
 function enemy() {
-    enemyRect(enemyXpos, enemyYpos, ENEMY_SIZE, ENEMY_SIZE, 'red');
+    enemyRect(enemyXpos, enemyYpos, ENEMY_SIZE, ENEMY_SIZE, 'blue');
 }
 
 // for enemy
@@ -72,22 +73,31 @@ function enemyMovement() {
 
     if(enemyXpos == 800) {
         playerHealth = playerHealth - 1;
-        enemyYpos = Math.floor(Math.random()*(canvas.width - ENEMY_SIZE));
+        enemyYpos = Math.floor(Math.random()*400 - 25);
         enemyXpos = 0; 
     }
 
     if(playerHealth == 0){
         enemyXspeed = 0;
-        enemyXpos = 900;
-        enemyYpos = 900;
+        enemyXpos = 0;
+        enemyYpos = 0;
 
         alert('You lose');
     }
 }
 
 function shootEnemy() {
-    enemyXpos = 0;
-}
+     if(enemyHealth == 0){
+        alert('Enemies are getting faster, can you keep up?')
+        enemyHealth += 10;
+        enemyXspeed += 1;
+    }
+    else{
+        enemyXpos = 0;
+        enemyYpos = Math.floor(Math.random()*400 - 25);
+        enemyHealth = enemyHealth - 1;
+    }
+} 
 
 // draw
 function draw() {
@@ -119,13 +129,13 @@ function towerChange() {
     var select = document.getElementById("towers").value;
 
     if (select === "tower_1"){
-        ctx.drawImage(tower1, 0,80,130,130);
+        ctx.drawImage(tower1, 600,80,130,130);
     }
     else if(select == "tower_2"){
-        ctx.drawImage(tower2, 0,80,130,130);
+        ctx.drawImage(tower2, 600,80,130,130);
     }
     else if(select == "tower_3"){
-        ctx.drawImage(tower3, 0,80,130,130);
+        ctx.drawImage(tower3, 600,80,130,130);
     }
 
     document.getElementById("myCanvas").focus();
