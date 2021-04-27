@@ -4,7 +4,6 @@ const ctx = canvas.getContext("2d");
 
 var wallet = 100;
 
-
 function playGame() {
     //alert("Wave 1 incoming");
     //console.log("wave 1 incoming");
@@ -14,17 +13,6 @@ function playGame() {
 function buttonGone() {
     var x = document.getElementById("playButton");
       x.style.display = "none";
-  }
-
-// towers
-function buyTower() {
-    wallet -= 50;
-    console.log(wallet);
-}
-
-function sellTower() {
-    wallet += 50;
-    console.log(wallet);
 }
 
 // healthbar 
@@ -57,21 +45,59 @@ tower3.src = "./tower3.png";
 
 // update
 function update() {
-    towerChange();
+    enemyMovement();
+}
+
+// enemy variables
+const ENEMY_SIZE = 25;
+var enemyXpos = 0;
+var enemyYpos = 230;
+var enemyXspeed = 5;
+var enemyYspeed = 0;
+
+// rectangle enemies
+function enemy() {
+    enemyRect(enemyXpos, enemyYpos, ENEMY_SIZE, ENEMY_SIZE, 'red');
+}
+
+// for enemy
+function enemyRect(x,y,w,h,colour) {
+    ctx.fillStyle = colour;
+    ctx.fillRect(x,y,w,h);
+}
+
+// enemy movement
+function enemyMovement() {
+    enemyXpos += enemyXspeed;
+
+    if(enemyXpos == 800) {
+        playerHealth = playerHealth - 1;
+        enemyYpos = Math.floor(Math.random()*(canvas.width - ENEMY_SIZE));
+        enemyXpos = 0; 
+    }
+
+    if(playerHealth == 0){
+        enemyXspeed = 0;
+        enemyXpos = 900;
+        enemyYpos = 900;
+
+        alert('You lose');
+    }
+}
+
+function shootEnemy() {
+    enemyXpos = 0;
 }
 
 // draw
 function draw() {
-    console.log("draw function logged");
+    //console.log("draw function logged");
     ctx.clearRect(0,0, canvas.width, canvas.height);
 
+    enemy();
     animate();
-
-    // path
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 180, 800, 100);
-    ctx.rect(0, 180, 800, 100);
-    ctx.stroke();
+    towerChange();
+    path();
 }
 
 // animation
@@ -83,24 +109,34 @@ function animate() {
 function gameLoop() {
     update();
     draw();
+    window.requestAnimationFrame(gameLoop);
 }
 
 // draws the tower images
 function towerChange() {
-    console.log("tower has changed");
+    //console.log("tower has changed");
 
     var select = document.getElementById("towers").value;
 
     if (select === "tower_1"){
-        ctx.drawImage(tower1, 0,0);
+        ctx.drawImage(tower1, 0,80,130,130);
     }
     else if(select == "tower_2"){
-        ctx.drawImage(tower2, 0,0);
+        ctx.drawImage(tower2, 0,80,130,130);
     }
     else if(select == "tower_3"){
-        ctx.drawImage(tower3, 0,0);
+        ctx.drawImage(tower3, 0,80,130,130);
     }
 
     document.getElementById("myCanvas").focus();
 }
+
+// path
+function path(){
+    //ctx.fillStyle = 'rgba(103, 128, 159, 1)'; // colour = "hoki"
+    //ctx.fillRect(0, 180, 800, 100);
+    //ctx.rect(0, 180, 800, 100);
+    //ctx.stroke();
+}
+
 

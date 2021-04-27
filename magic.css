@@ -35,7 +35,7 @@ h1 {
 }
 
 /* buy tower button */
-.buyTower {
+.shootEnemy {
     background-color: #56D596;
     border: none;
     border-radius: 8px;
@@ -48,22 +48,6 @@ h1 {
     position: absolute;
     top: 80%;
     left: 40%;
-}
-
-/* sell tower button */
-.sellButton {
-    background-color: #56D596;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    position: absolute;
-    top: 80%;
-    left: 60%;
 }
 
 /* wave text */
